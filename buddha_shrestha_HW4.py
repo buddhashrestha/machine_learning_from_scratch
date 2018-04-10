@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from dnn_app_utils import *
-
+start = time.clock()
 
 import cloudpickle as pickle
 mnist23 = pickle.load( open( "./datasets/mnist23.data", "rb" ) )
@@ -119,5 +119,5 @@ parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=2500, p
 pred_train = predict(train_x, train_y, parameters)
 
 pred_train = predict(test_x, test_y, parameters)
-print("Everything good :", pred_train)
+print("Everything good, time taken :", print time.clock() - start)
 
