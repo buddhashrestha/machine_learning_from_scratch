@@ -119,5 +119,5 @@ parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=2500, p
 pred_train = predict(train_x, train_y, parameters)
 
 pred_train = predict(test_x, test_y, parameters)
-print("Everything good, time taken :", print time.clock() - start)
+print("Everything good, time taken :", time.clock() - start)
 
