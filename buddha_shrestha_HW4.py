@@ -4,12 +4,9 @@ import matplotlib.pyplot as plt
 
 from dnn_app_utils import *
 
-plt.rcParams['figure.figsize'] = (5.0, 4.0) # set default size of plots
-plt.rcParams['image.interpolation'] = 'nearest'
-plt.rcParams['image.cmap'] = 'gray'
 
 import cloudpickle as pickle
-mnist23 = pickle.load( open( "../Programs/mnist23.data", "rb" ) )
+mnist23 = pickle.load( open( "./datasets/mnist23.data", "rb" ) )
 
 
 np.random.seed(1)
@@ -18,7 +15,7 @@ train_x_orig, train_y, test_x_orig, test_y, classes = load_data()
 
 # Example of a picture
 index = 10
-plt.show(train_x_orig[index])
+
 print ("y = " + str(train_y[0, index]) + ". It's a " + classes[train_y[0, index]].decode("utf-8") + " picture.")
 
 training_samples = 10500
@@ -111,13 +108,6 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.085, num_iterations=3000, p
         if print_cost and i % 100 == 0:
             print ("Cost after iteration %i: %f" % (i, cost))
             costs.append(cost)
-            
-    # plot the cost
-    plt.plot(np.squeeze(costs))
-    plt.ylabel('cost')
-    plt.xlabel('iterations (per tens)')
-    plt.title("Learning rate =" + str(learning_rate))
-    plt.show()
 
     return parameters
 
