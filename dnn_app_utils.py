@@ -267,7 +267,7 @@ def compute_cost(AL, Y):
     
     return cost
 
-def linear_backward(dZ, cache,lambd=0.7):
+def linear_backward(dZ, cache,lambd=1.0):
     """
     Implement the linear portion of backward propagation for a single layer (layer l)
 
