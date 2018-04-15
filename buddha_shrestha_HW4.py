@@ -19,7 +19,7 @@ index = 10
 print ("y = " + str(train_y[0, index]) + ". It's a " + classes[train_y[0, index]].decode("utf-8") + " picture.")
 # mnist23.data = mnist23.data[:5000]
 # mnist23.target = mnist23.target[:5000]
-training_samples = 9000
+training_samples = 8000
 
 # Explore your dataset 
 # m_train = train_x_orig.shape[0]
@@ -59,7 +59,7 @@ layers_dims = [784, 10, 4, 1] #  5-layer model
 # layers_dims = [12288, 20, 7, 5, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.075, num_iterations=5000, print_cost=False): #lr was 0.009
+def L_layer_model(X, Y, layers_dims, learning_rate=0.08, num_iterations=5000, print_cost=False): #lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
     
@@ -116,7 +116,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.075, num_iterations=5000, p
 
 # parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=2500, print_cost=True)
 
-parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=2500, print_cost=True)
+parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=3500, print_cost=True)
 
 pred_train = predict(train_x, train_y, parameters)
 
