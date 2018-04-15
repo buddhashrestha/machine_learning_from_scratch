@@ -17,8 +17,10 @@ train_x_orig, train_y, test_x_orig, test_y, classes = load_data()
 index = 10
 
 print ("y = " + str(train_y[0, index]) + ". It's a " + classes[train_y[0, index]].decode("utf-8") + " picture.")
+# mnist23.data = mnist23.data[:5000]
+# mnist23.target = mnist23.target[:5000]
+training_samples = 9000
 
-training_samples = 10500
 # Explore your dataset 
 # m_train = train_x_orig.shape[0]
 # num_px = train_x_orig.shape[1]

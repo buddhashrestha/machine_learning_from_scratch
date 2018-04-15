@@ -38,4 +38,4 @@ class Solution:
             elif (m[i+1][j]==m[i][j]):
                 i = i + 1
         return palinWord
-print(Solution().longestPalin("aibohphobia"))
+print(Solution().longestPalin("abcdefa"))

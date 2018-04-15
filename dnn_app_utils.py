@@ -267,7 +267,7 @@ def compute_cost(AL, Y):
     
     return cost
 
-def linear_backward(dZ, cache):
+def linear_backward(dZ, cache,lambd=0.7):
     """
     Implement the linear portion of backward propagation for a single layer (layer l)
 
@@ -283,7 +283,7 @@ def linear_backward(dZ, cache):
     A_prev, W, b = cache
     m = A_prev.shape[1]
 
-    dW = 1./m * np.dot(dZ,A_prev.T)
+    dW = 1./m * np.dot(dZ,A_prev.T)  + (lambd * W) / m
     db = 1./m * np.sum(dZ, axis = 1, keepdims = True)
     dA_prev = np.dot(W.T,dZ)
     
