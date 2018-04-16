@@ -60,7 +60,7 @@ layers_dims = [784, 20, 7, 3, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.085, num_iterations=5000, print_cost=False): #lr was 0.009
+def L_layer_model(X, Y, layers_dims, learning_rate=0.08, num_iterations=5000, print_cost=False): #lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
     
