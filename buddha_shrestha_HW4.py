@@ -7,7 +7,7 @@ start = time.clock()
 
 import cloudpickle as pickle
 mnist23 = pickle.load( open( "./datasets/mnist23.data", "rb" ) )
-
+from sklearn.decomposition import PCA
 
 np.random.seed(1)
 
@@ -35,10 +35,11 @@ training_samples = 10000
 # print ("test_y shape: " + str(test_y.shape))
 
 # Reshape the training and test examples 
-train_x_flatten = mnist23.data[:training_samples].T  #train_x_orig.reshape(train_x_orig.shape[0], -1).T   # The "-1" makes reshape flatten the remaining dimensions
+train_x_flatten = mnist23.data[:training_samples]  #train_x_orig.reshape(train_x_orig.shape[0], -1).T   # The "-1" makes reshape flatten the remaining dimensions
 train_y = np.array([mnist23.target[:training_samples]])
 test_x_flatten = mnist23.data[training_samples:].T
 test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test_x_orig.shape[0], -1).T
+
 
 # Standardize data to have feature values between 0 and 1.
 train_x = train_x_flatten / 255.
@@ -48,14 +49,17 @@ test_y = test_y - 2
 print(train_y)
 print ("train_x's shape: " + str(train_x.shape))
 print ("test_x's shape: " + str(test_x.shape))
-
+pca = PCA(n_components=300)
+pca.fit(train_x)
+train_x = pca.transform(train_x)
+train_x = train_x.T
 ### CONSTANTS DEFINING THE MODEL ####
 n_x = 12288     # num_px * num_px * 3
 n_h = 7
 n_y = 1
 layers_dims = (n_x, n_h, n_y)
 ### CONSTANTS ###
-layers_dims = [784, 20, 7, 3, 1] #  5-layer model
+layers_dims = [train_x.shape[0], 20, 7, 3, 1] #  5-layer model
 # layers_dims = [12288, 20, 7, 5, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
