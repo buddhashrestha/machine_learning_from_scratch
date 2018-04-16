@@ -37,7 +37,7 @@ training_samples = 10000
 # Reshape the training and test examples 
 train_x_flatten = mnist23.data[:training_samples]  #train_x_orig.reshape(train_x_orig.shape[0], -1).T   # The "-1" makes reshape flatten the remaining dimensions
 train_y = np.array([mnist23.target[:training_samples]])
-test_x_flatten = mnist23.data[training_samples:].T
+test_x_flatten = mnist23.data[training_samples:]
 test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test_x_orig.shape[0], -1).T
 
 
@@ -52,7 +52,9 @@ print ("test_x's shape: " + str(test_x.shape))
 pca = PCA(n_components=300)
 pca.fit(train_x)
 train_x = pca.transform(train_x)
+test_x = pca.transform(test_x)
 train_x = train_x.T
+test_x = test_x.T
 ### CONSTANTS DEFINING THE MODEL ####
 n_x = 12288     # num_px * num_px * 3
 n_h = 7
