@@ -49,7 +49,7 @@ test_y = test_y - 2
 print(train_y)
 print ("train_x's shape: " + str(train_x.shape))
 print ("test_x's shape: " + str(test_x.shape))
-pca = PCA(n_components=250)
+pca = PCA(n_components=220)
 pca.fit(train_x)
 train_x = pca.transform(train_x)
 test_x = pca.transform(test_x)
@@ -61,7 +61,7 @@ n_h = 7
 n_y = 1
 layers_dims = (n_x, n_h, n_y)
 ### CONSTANTS ###
-layers_dims = [train_x.shape[0], 20, 7, 3, 1] #  5-layer model
+layers_dims = [train_x.shape[0], 20, 7, 5, 1] #  5-layer model
 # layers_dims = [12288, 20, 7, 5, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
