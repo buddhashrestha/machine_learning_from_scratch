@@ -19,7 +19,7 @@ index = 10
 print ("y = " + str(train_y[0, index]) + ". It's a " + classes[train_y[0, index]].decode("utf-8") + " picture.")
 # mnist23.data = mnist23.data[:5000]
 # mnist23.target = mnist23.target[:5000]
-training_samples = 9000
+training_samples = 10000
 
 # Explore your dataset 
 # m_train = train_x_orig.shape[0]
@@ -55,7 +55,7 @@ n_h = 7
 n_y = 1
 layers_dims = (n_x, n_h, n_y)
 ### CONSTANTS ###
-layers_dims = [784, 20, 1] #  5-layer model
+layers_dims = [784, 20, 7, 1] #  5-layer model
 # layers_dims = [12288, 20, 7, 5, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
