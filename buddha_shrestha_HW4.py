@@ -49,7 +49,7 @@ test_y = test_y - 2
 print(train_y)
 print ("train_x's shape: " + str(train_x.shape))
 print ("test_x's shape: " + str(test_x.shape))
-pca = PCA(n_components=248)
+pca = PCA(n_components=251)
 pca.fit(train_x)
 train_x = pca.transform(train_x)
 test_x = pca.transform(test_x)
