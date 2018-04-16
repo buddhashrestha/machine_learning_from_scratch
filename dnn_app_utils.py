@@ -136,7 +136,7 @@ def initialize_parameters(n_x, n_h, n_y):
     return parameters     
 
 
-def initialize_parameters_deep(layer_dims):
+def initialize_parameters_deep(layers_dims):
     """
     Arguments:
     layer_dims -- python array (list) containing the dimensions of each layer in our network
