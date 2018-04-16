@@ -8,6 +8,7 @@ start = time.clock()
 import cloudpickle as pickle
 mnist23 = pickle.load( open( "./datasets/mnist23.data", "rb" ) )
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 
 np.random.seed(1)
 
@@ -40,10 +41,18 @@ train_y = np.array([mnist23.target[:training_samples]])
 test_x_flatten = mnist23.data[training_samples:]
 test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test_x_orig.shape[0], -1).T
 
-
+mean = np.mean(train_x_flatten)
 # Standardize data to have feature values between 0 and 1.
-train_x = train_x_flatten / 255.
-test_x = test_x_flatten / 255.
+
+print(")))))))")
+scaler = StandardScaler()
+scaler = scaler.fit(train_x_flatten)
+normalized_train_X = scaler.transform(train_x_flatten)
+normalized_test_X = scaler.transform(test_x_flatten)
+
+
+train_x = normalized_train_X #/ 255.
+test_x = normalized_test_X #/ 255.
 train_y = train_y - 2
 test_y = test_y - 2
 print(train_y)
@@ -123,7 +132,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.08, num_iterations=5000, pr
 
 # parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=2500, print_cost=True)
 
-parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=4000, print_cost=True)
+parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=3000, print_cost=True)
 
 pred_train = predict(train_x, train_y, parameters)
 
