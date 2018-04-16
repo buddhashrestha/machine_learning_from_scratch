@@ -19,7 +19,7 @@ index = 10
 print ("y = " + str(train_y[0, index]) + ". It's a " + classes[train_y[0, index]].decode("utf-8") + " picture.")
 # mnist23.data = mnist23.data[:5000]
 # mnist23.target = mnist23.target[:5000]
-training_samples = 8000
+training_samples = 9000
 
 # Explore your dataset 
 # m_train = train_x_orig.shape[0]
