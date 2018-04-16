@@ -55,7 +55,7 @@ n_h = 7
 n_y = 1
 layers_dims = (n_x, n_h, n_y)
 ### CONSTANTS ###
-layers_dims = [784, 10, 5, 1] #  5-layer model
+layers_dims = [784, 20, 1] #  5-layer model
 # layers_dims = [12288, 20, 7, 5, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
