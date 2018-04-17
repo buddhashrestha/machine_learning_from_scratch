@@ -41,7 +41,6 @@ train_y = np.array([mnist23.target[:training_samples]])
 test_x_flatten = mnist23.data[training_samples:]
 test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test_x_orig.shape[0], -1).T
 
-mean = np.mean(train_x_flatten)
 # Standardize data to have feature values between 0 and 1.
 x = train_x_flatten - mean
 print("normal : ",mean)
@@ -51,6 +50,8 @@ normalized_train_X = scaler.transform(train_x_flatten)
 normalized_test_X = scaler.transform(test_x_flatten)
 print("max value :",normalized_test_X)
 
+mean = train_x_flatten.mean(axis=0)
+print("mean :",mean) 
 train_x = normalized_train_X #/ 255.
 test_x = normalized_test_X #/ 255.
 train_y = train_y - 2
@@ -75,7 +76,7 @@ layers_dims = [train_x.shape[0], 20, 7, 3, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.015, num_iterations=5000, print_cost=False): #lr was 0.009
+def L_layer_model(X, Y, layers_dims, learning_rate=0.01, num_iterations=5000, print_cost=False): #lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
     
