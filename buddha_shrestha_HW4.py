@@ -42,25 +42,15 @@ test_x_flatten = mnist23.data[training_samples:]
 test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test_x_orig.shape[0], -1).T
 
 # Standardize data to have feature values between 0 and 1.
-mean = train_x_flatten.mean(axis=0)
-sd = np.std(train_x_flatten, axis=0)
-x = (train_x_flatten - mean) / 255
-print("normal : ",x)
-scaler = StandardScaler()
-scaler = scaler.fit(train_x_flatten)
-normalized_train_X = scaler.transform(train_x_flatten)
-normalized_test_X = scaler.transform(test_x_flatten)
-print("max value :",normalized_test_X)
 
+mean = train_x_flatten.mean(axis=0)
 
 train_x =  (train_x_flatten - mean) / 255 
 test_x =  (test_x_flatten - mean) / 255 
 train_y = train_y - 2
 test_y = test_y - 2
-print(train_y)
-print ("train_x's shape: " + str(train_x.shape))
-print ("test_x's shape: " + str(test_x.shape))
-pca = PCA(n_components=240)
+
+pca = PCA(n_components=250)
 pca.fit(train_x)
 train_x = pca.transform(train_x)
 test_x = pca.transform(test_x)
