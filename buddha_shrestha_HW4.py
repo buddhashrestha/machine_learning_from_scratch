@@ -75,7 +75,7 @@ layers_dims = [train_x.shape[0], 20, 7, 3, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.008, num_iterations=5000, print_cost=False): #lr was 0.009
+def L_layer_model(X, Y, layers_dims, learning_rate=0.02, num_iterations=5000, print_cost=False): #lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
     
@@ -132,7 +132,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.008, num_iterations=5000, p
 
 # parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=2500, print_cost=True)
 
-parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=1000, print_cost=True)
+parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=2000, print_cost=True)
 
 pred_train = predict(train_x, train_y, parameters)
 
