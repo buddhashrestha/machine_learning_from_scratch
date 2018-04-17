@@ -43,13 +43,13 @@ test_y = np.array([mnist23.target[training_samples:]]) #test_x_orig.reshape(test
 
 mean = np.mean(train_x_flatten)
 # Standardize data to have feature values between 0 and 1.
-
-print(")))))))")
+x = train_x_flatten - mean
+print("normal : ",mean)
 scaler = StandardScaler()
 scaler = scaler.fit(train_x_flatten)
 normalized_train_X = scaler.transform(train_x_flatten)
 normalized_test_X = scaler.transform(test_x_flatten)
-
+print("max value :",normalized_test_X)
 
 train_x = normalized_train_X #/ 255.
 test_x = normalized_test_X #/ 255.
@@ -75,7 +75,7 @@ layers_dims = [train_x.shape[0], 20, 7, 3, 1] #  5-layer model
 # GRADED FUNCTION: n_layer_model
 
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.08, num_iterations=5000, print_cost=False): #lr was 0.009
+def L_layer_model(X, Y, layers_dims, learning_rate=0.008, num_iterations=5000, print_cost=False): #lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
     
@@ -132,7 +132,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.08, num_iterations=5000, pr
 
 # parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=2500, print_cost=True)
 
-parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=3000, print_cost=True)
+parameters = L_layer_model(train_x,train_y , layers_dims, num_iterations=1000, print_cost=True)
 
 pred_train = predict(train_x, train_y, parameters)
 
