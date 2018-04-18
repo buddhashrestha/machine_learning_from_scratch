@@ -9,7 +9,7 @@ import cloudpickle as pickle
 mnist23 = pickle.load( open( "./datasets/mnist23.data", "rb" ) )
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-
+import sys
 np.random.seed(1)
 
 train_x_orig, train_y, test_x_orig, test_y, classes = load_data()
@@ -50,9 +50,12 @@ test_x =  (test_x_flatten - mean) / 255
 train_y = train_y - 2
 test_y = test_y - 2
 
+print("trainx :",train_x.shape)
 pca = PCA(n_components=250)
 pca.fit(train_x)
 train_x = pca.transform(train_x)
+print("trainx :",train_x.shape)
+sys.exit()
 test_x = pca.transform(test_x)
 train_x = train_x.T
 test_x = test_x.T
